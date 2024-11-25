@@ -1,0 +1,92 @@
+﻿@model LibraryManagement.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="container text-center">
+    <h4>Book</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-5">
+            <img src="@Model.Avatar" class="d-block img-fluid" alt="...">
+        </div>
+        <div class="col-sm-7 ps-4">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.BookCode)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.BookCode)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Publisher)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Publisher)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.PublishedYear)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.PublishedYear)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.TotalCopies)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TotalCopies)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.AvailableCopies)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.AvailableCopies)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+     
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Pdf)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Pdf)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Category.CategoryId)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Author)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Author.AuthorId)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+</div>
+<div>
+    <a asp-action="ShowBookListFromDb">Back to List</a>
+</div>
