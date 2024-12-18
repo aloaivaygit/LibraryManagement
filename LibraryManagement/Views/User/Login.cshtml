@@ -24,7 +24,7 @@
             max-width: 400px;
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+             /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
             background-color: #fff;
         }
         .btn-primary {
@@ -43,6 +43,8 @@
             color: #2f34a6;
         }
     </style>
+   
+
 </head>
 <body>
 
@@ -52,8 +54,8 @@
             <form>
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="Email">
-                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="username" placeholder="Email">
+                    <label for="username">Email</label>
                 </div>
 
 
@@ -79,10 +81,40 @@
                 <button type="button" class="btn btn-outline-success w-100 mb-3">Đăng nhập bằng Google</button>
             </form>
 
-            <p class="text-center">Bạn chưa là thành viên? <a href="#" class="text-link">Đăng ký ngay!</a></p>
+            <p class="text-center"> <a href="#" class="text-link">Đăng ký</a></p>
         </div>
     </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
 
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/api/Auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    alert(error.message || 'Login failed');
+                    return;
+                }
+
+                const data = await response.json();
+                alert('Login successful');
+                window.location.href = "/Home/Index";
+                
+                // localStorage.setItem('jwt', data.token); Save token for subsequent requests
+
+            } catch (error) {
+                console.error('Error logging in:', error);
+            }
+        });
+    </script>
 </body>
 </html>
 

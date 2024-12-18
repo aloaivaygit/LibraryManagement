@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace LibraryManagement.Models
 {
@@ -22,6 +23,7 @@ namespace LibraryManagement.Models
         [Required]
         public DateTime ReturnDate { get; set; }
 
+        [AllowNull]
         public int Status { get; set; }
 
         public Book Book { get; set; }

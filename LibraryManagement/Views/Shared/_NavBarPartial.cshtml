@@ -1,0 +1,25 @@
+﻿@model List<LibraryManagement.Models.Category>
+
+<div class="header-bot">
+            <div id="menu-top">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="mb-2 navbar-nav me-auto mb-lg-0">
+                            <li class="nav-item-menu" style="margin-left: 20px">
+                                <a class="text-uppercase" aria-current="page" href="/Home/Index">Trang chủ</a>
+                            </li>
+
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <li class="nav-item-menu">
+                            <a class="text-uppercase" aria-current="page" href="@category.CategoryId">@category.Name</a>
+                        </li>
+                    }
+                           
+                        </ul>
+                        <i class="fa-duotone fa-book-open-reader"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>

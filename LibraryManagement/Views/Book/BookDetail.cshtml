@@ -1,42 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model LibraryManagement.Models.Book
-<html>
+﻿
+<head>
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 <body>
-
-
-	<div class="container text-center">
-		<h2>Thông tin chi tiết</h2>
-        <div class="row">
-            <div class="col-sm-5">
-                 <img src="@Model.Avatar" class="d-block img-fluid" alt="..."> 
+    <div id="header-detail">
+        <div class="line-container">
+            <div class="line"></div>
+            <div class="text">
+                <center>
+                    <h2>Thông tin chi tiết</h2>
+                </center>
             </div>
-               
-            <div class="col-sm-7 ps-4">
-                     <div class="row">
-                        @Model.Title
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="detail-page">
+        <div class="container-fluid">
+            <div class="row" style="padding-top: 25px; width: 100%">
+
+                @foreach (var book in ViewBag.Book)
+                {
+                    <div class="col" style="width:50%">
+                        <img src="@book.Avatar" height="600" style="border-radius:5px; padding-left: 200px;">
                     </div>
-                    <div class="row">
-                        @Model.CategoryId
+
+                    <div class="col" style="width: 30%">
+                        <h2>@book.Title</h2>
+                        <p><b>Xuất bản năm:</b> @book.PublishedYear</p>
+                        <p><b>Nhà xuất bản:</b> @book.Publisher</p>
+                        <p><b>Giới thiệu:</b> @book.Description</p>
+
+                        <a asp-controller="Book" asp-action="ReadPdf" asp-route-id="@book.BookId" class=" btn btn-success">Đọc sách online</a>
                     </div>
-                    <div class="row">
-                        @Model.AuthorId
-                    </div>
-                    <div class="row">
-                        @Model.Publisher
-                    </div>
-                    <div class="row">
-                        @Model.PublishedYear
-                    </div> 
-                    <div class="row">
-                        @Model.Description
-                    </div>
+                }
             </div>
         </div>
-	</div>
-	
+        
+    </div>
 </body>
-</html>
+
+
+

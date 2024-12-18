@@ -4,89 +4,39 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div class="container text-center">
-    <h4>Book</h4>
-    <hr />
-    <div class="row">
-        <div class="col-sm-5">
-            <img src="@Model.Avatar" class="d-block img-fluid" alt="...">
-        </div>
-        <div class="col-sm-7 ps-4">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Title)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Title)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.BookCode)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.BookCode)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Publisher)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Publisher)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.PublishedYear)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.PublishedYear)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.TotalCopies)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.TotalCopies)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.AvailableCopies)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.AvailableCopies)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CreatedDate)
-                </dd>
-     
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Pdf)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Pdf)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Category)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Category.CategoryId)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Author)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Author.AuthorId)
-                </dd>
-            </dl>
+<body>
+    <div id="header-detail">
+        <div class="line-container">
+            <div class="line"></div>
+            <div class="text">
+                <center>
+                    <h2>Thông tin chi tiết</h2>
+                </center>
+            </div>
+            <div class="line"></div>
         </div>
     </div>
+    <div class="detail-page">
+        <div class="container-fluid">
+            <div class="row" style="padding-top: 25px; width: 100%">
 
-</div>
-<div>
-    <a asp-action="ShowBookListFromDb">Back to List</a>
-</div>
+       
+                    <div class="col" style="width:50%">
+                        <img src="@(Model.Avatar)" height="600" style="border-radius:5px; padding-left: 200px;">
+                    </div>
+
+                    <div class="col" style="width: 30%">
+                    <h2>@Model.Title</h2>
+                    <p><b>Xuất bản năm:</b> @Model.PublishedYear</p>
+                    <p><b>Nhà xuất bản:</b> @Model.Publisher</p>
+                    <p><b>Giới thiệu:</b> @Model.Description</p>
+
+                    <a asp-controller="Book" asp-action="ReadPdf" asp-route-id="@Model.BookId" class=" btn btn-success">Đọc sách online</a>
+                    </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</body>
+

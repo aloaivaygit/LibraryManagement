@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Models.Context
 {
-    public class BookContext : DbContext
+    public class BookContext : IdentityDbContext<IdentityUser>
     {
         public BookContext(DbContextOptions<BookContext> options) : base(options)
         {
@@ -10,6 +12,8 @@ namespace LibraryManagement.Models.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Book>()
                 .HasOne(b => b.Category)
                 .WithMany(b => b.Books)

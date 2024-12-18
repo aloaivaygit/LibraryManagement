@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="signup-container">
+        <div class="signup-card p-4">
+            <h3 class="text-start mb-3">Đăng ký</h3>
+            <form id="signupForm">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="username" placeholder="Tên người dùng" required>
+                    <label for="username">Tên người dùng</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Mật khẩu" required>
+                    <label for="password">Mật khẩu</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    <label for="confirmPassword">Nhập lại mật khẩu</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 mb-2">Đăng ký</button>
+            </form>
+
+            <p class="text-center">Bạn đã có tài khoản? <a href="/User/Login" class="text-link">Đăng nhập</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+   
+            if (password !== confirmPassword) {
+                alert('Mật khẩu không khớp!');
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/Auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password, confirmPassword })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    alert(error.message || 'Đăng ký thất bại!');
+                    return;
+                }
+
+                alert('Đăng ký thành công!');
+                window.location.href = '/User/Login';
+            } catch (error) {
+                console.error('Error during registration:', error);
+                alert('Đăng ký thất bại!');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -161,6 +161,12 @@ namespace LibraryManagement.Controllers
             return View();
         }
 
-  
+        public async Task<IActionResult> SignUp()
+        {
+
+            return View();
+        }
+
+
     }
 }

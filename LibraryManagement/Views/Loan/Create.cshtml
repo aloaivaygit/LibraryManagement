@@ -1,0 +1,60 @@
+﻿@model Loan
+@{
+    Layout = "_AdminLayout";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - LibraryManagement</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+</head>
+
+
+<center>
+    <h2>Thêm mới thông tin sách</h2>
+</center>
+
+<form asp-action="Create" method="post" id="create-form">
+    <input type="hidden" asp-for="LoanId" />
+    <div class="mb-3">
+        <b>
+            <label asp-for="UserId" class="control-label" style="padding-bottom: 5px">Tên người mượn</label>
+        </b>
+        <select asp-for="UserId" asp-items="ViewBag.Users" class="form-control"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <b>
+            <label asp-for="BookId" class="control-label" style="padding-bottom: 5px">Sách</label>
+        </b>
+        <select asp-for="BookId" asp-items="ViewBag.Books" class="form-control"></select>
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <b>
+            <label asp-for="LoanDate" class="control-label" style="padding-bottom: 5px">Ngày mượn</label>
+        </b>
+        <input asp-for="LoanDate" type="date" class="form-control"></input>
+        <span asp-validation-for="LoanDate" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <b>
+            <label asp-for="DueDate" class="control-label" style="padding-bottom: 5px">Ngày đến hạn</label>
+        </b>
+        <input asp-for="DueDate" type="date" class="form-control"></input>
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <b>
+            <label asp-for="ReturnDate" class="control-label" style="padding-bottom: 5px">Ngày hoàn trả</label>
+        </b>
+        <input asp-for="ReturnDate" type="date" class="form-control" />
+        <span asp-validation-for="ReturnDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" asp-action="Create">Lưu</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>
